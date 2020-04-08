@@ -26,7 +26,10 @@ const int rel3 = 10;
 // Adafruit pressure sensor
 #define RESET_PIN  -1  // set to any GPIO pin # to hard-reset on begin()
 #define EOC_PIN    -1  // set to any GPIO pin to read end-of-conversion by pin
-Adafruit_MPRLS mpr = Adafruit_MPRLS(RESET_PIN, EOC_PIN);
+Adafruit_MPRLS mpr1 = Adafruit_MPRLS(RESET_PIN, EOC_PIN);
+Adafruit_MPRLS mpr2 = Adafruit_MPRLS(RESET_PIN, EOC_PIN);
+Adafruit_MPRLS mpr3 = Adafruit_MPRLS(RESET_PIN, EOC_PIN);
+Adafruit_MPRLS mpr4 = Adafruit_MPRLS(RESET_PIN, EOC_PIN);
 
 // declare the LCD screen. 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
@@ -52,8 +55,12 @@ void setup(){
   pinMode(display, OUTPUT);
   pinMode(alarmButton, INPUT);
   
+   //CHECK ALL OF THE ADDRESSES
+   mpr_1.begin(0x18, &Wire); 
+   mpr_2.begin(0x19, &Wire);
+   mpr_3.begin(0x20, &Wire);
+   mpr_4.begin(0x21, &Wire);
   // perform system checks
-  
 }
 
 void loop(){
@@ -68,6 +75,10 @@ void loop(){
   potState = analogRead(potPin); 
   
   //use Wire Library for i2c
-  float pressure_hPa = mpr.readPressure();
+  float pressure1_hPa = mpr1.readPressure();
+  float pressure2_hPa = mpr2.readPressure();
+  float pressure3_hPa = mpr3.readPressure();
+  float pressure4_hPa = mpr4.readPressure();
 }
+
 
