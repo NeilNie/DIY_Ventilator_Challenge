@@ -55,6 +55,8 @@ void setup(){
   pinMode(display, OUTPUT);
   pinMode(alarmButton, INPUT);
   
+   //initialize Relay states
+   
    //CHECK ALL OF THE ADDRESSES
    mpr_1.begin(0x18, &Wire); 
    mpr_2.begin(0x19, &Wire);
@@ -83,14 +85,9 @@ void loop(){
    
    //if the pressure drops below x, then turn alarm on
    
-   //relay
-   digitalWrite(rel1, HIGH);
-   digitalWrite(rel2, HIGH);
-   digitalWrite(rel3, HIGH);
+   //finish relay section
    delay(300);                //check the time
-   digitalWrite(rel1, LOW);
-   digitalWrite(rel2, LOW);
-   digitalWrite(rel3, LOW); 
+
    delay(300);
       
    
