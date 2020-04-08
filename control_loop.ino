@@ -60,6 +60,7 @@ void setup(){
    mpr_2.begin(0x19, &Wire);
    mpr_3.begin(0x20, &Wire);
    mpr_4.begin(0x21, &Wire);
+   
   // perform system checks
 }
 
@@ -73,12 +74,27 @@ void loop(){
   
   // read knob state, adjust inflation speed.
   potState = analogRead(potPin); 
-  
+   
   //use Wire Library for i2c
   float pressure1_hPa = mpr1.readPressure();
   float pressure2_hPa = mpr2.readPressure();
   float pressure3_hPa = mpr3.readPressure();
   float pressure4_hPa = mpr4.readPressure();
+   
+   //if the pressure drops below x, then turn alarm on
+   
+   //relay
+   digitalWrite(rel1, HIGH);
+   digitalWrite(rel2, HIGH);
+   digitalWrite(rel3, HIGH);
+   delay(300);                //check the time
+   digitalWrite(rel1, LOW);
+   digitalWrite(rel2, LOW);
+   digitalWrite(rel3, LOW); 
+   delay(300);
+      
+   
+   
 }
 
 
