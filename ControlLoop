@@ -1,0 +1,33 @@
+const float VCC = 5.0; //check measured voltage
+const float R_DIV = 220; //check measured resistance
+const int potPin = A3;
+const int display = A4;
+const int pressurePin = A5;
+const int alarmButton = 2;
+const int buzzer = 3;
+const int rel1 = 8;
+const int rel2 = 9;
+const int rel3 = 10;
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(buzzer, OUTPUT);
+  pinMode(rel1, OUTPUT);
+  pinMode(rel2, OUTPUT);
+  pinMode(rel3, OUTPUT);
+  pinMode(display, OUTPUT);
+  pinMode(alarmButton, INPUT);
+}
+
+void loop(){
+  //turns off buzzer alarm if button is pressed
+  buttonState = digitalRead(alarmButton);
+  if(buttonState == HIGH){
+  digitalWrite(buzzer, LOW);
+  }
+  
+  potState = analogRead(potPin); 
+  pressureState = analog
+  
+}
+
