@@ -1,8 +1,6 @@
 const float VCC = 5.0; //check measured voltage
 const float R_DIV = 220; //check measured resistance
 const int potPin = A3;
-const int display = A4;
-const int pressurePin = A5;
 const int alarmButton = 2;
 const int buzzer = 3;
 const int rel1 = 8;
@@ -27,7 +25,8 @@ void loop(){
   }
   
   potState = analogRead(potPin); 
-  pressureState = analog
+  
+  //use Wire Library for i2c
   
 }
 
